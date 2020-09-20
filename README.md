@@ -1,6 +1,6 @@
 # Oye Rating System
 #### Assumptions
-  - Driver and Passanger accounts are already there in a table.
+  - Driver, Passanger accounts and Rides are already there in a table. 
   - These API will be called from secure server or some internal service;
   - If there is no record found the default rating result will be -1 with appropriate message.  
   
@@ -15,7 +15,7 @@
 -   open: ```src/main/resources/application.properties``` in your Text-editor
 -   edit below properties :
     - ```spring.datasource.username``` 
-    - ```spring.datasource.username``` 
+    - ```spring.datasource.password``` 
     - ```spring.datasource.url``` 
 
 -   run ```mvn spring-boot:run``` command in your terminal
