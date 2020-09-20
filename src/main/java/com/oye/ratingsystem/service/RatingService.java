@@ -123,7 +123,7 @@ public class RatingService implements RatingContract.Service {
 
     @Override
     public RatingContract.Dto.ResponseAvgRate getResponsePassengerAvgRating(Integer passengerId) {
-
+        synchronized (responseAvgRateDTO){
         if(!passengerRepository.existsById(passengerId)){
             responseAvgRateDTO.setAvgRating(-1F);
             responseAvgRateDTO.setMessage(RatingContract.Dto.ResponseAvgRate.USER_NOT_FOUND);
@@ -140,5 +140,6 @@ public class RatingService implements RatingContract.Service {
         responseAvgRateDTO.setMessage(RatingContract.Dto.ResponseAvgRate.MSG_SUCCESSFUL);
 
         return responseAvgRateDTO;
+        }
     }
 }
