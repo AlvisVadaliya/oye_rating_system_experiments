@@ -6,6 +6,7 @@ insert into person values(5, 1423185777, "einay.einotra@gmail.com", "einay", "ei
 insert into person values(6, 1423185777, "finay.finotra@gmail.com", "finay", "finotra");
 insert into person values(7, 1423185777, "ginay.ginotra@gmail.com", "ginay", "ginotra");
 
+
 insert into driver values(1, NULL, 1);
 insert into driver values(2, NULL, 2);
 insert into driver values(3, NULL, 3);
