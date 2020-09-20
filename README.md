@@ -11,6 +11,7 @@
 - Application is live [here](https://oye-rating-system.herokuapp.com/swagger-ui.html#/rating-controller) on heroku free server, but in case heroku is down below are the steps to install project locally
 
 - create database ```oye_rating_system``` in your local mysql
+- clone this project 
 -   ```cd rating-System```
 -   open: ```src/main/resources/application.properties``` in your Text-editor
 -   edit below properties :
