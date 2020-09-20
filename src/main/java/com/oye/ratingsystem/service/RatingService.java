@@ -40,15 +40,25 @@ public class RatingService implements RatingContract.Service {
     }
 
     private void setDriverAvgRating(RatingContract.Dto.RequestRate request) {
-        if(rideRepository.getOne(request.getRideId()).getDriverRate() != null)
-            return; // already rated before
-
         Driver driver = rideRepository.getOne(request.getRideId()).getDriver();
-        if(driver.getAvgRating()  == null)
-            driver.setAvgRating(request.getRate());
-        else
-            driver.setAvgRating(((driver.getAvgRating()+ request.getRate())/2));
+        Float oldAvgRating = driver.getAvgRating();
+        Float newDriverAvgRating = request.getRate();
+        Float oldDriverRating = rideRepository.getOne(request.getRideId()).getDriverRate();
+        Float newDriverRating = request.getRate();
+
+        if(oldDriverRating != null && oldAvgRating != null){
+            // already rated before so remove previous rating from AvgRating and try to rate again for same Ride
+            newDriverAvgRating = (findPreviousAvgRating(oldAvgRating, oldDriverRating) + newDriverRating)/2;
+        }
+        else if(oldAvgRating != null){
+            newDriverAvgRating = (oldAvgRating + newDriverRating)/2;
+        }
+        driver.setAvgRating(newDriverAvgRating);
         driverRepository.save(driver);
+    }
+
+    private float findPreviousAvgRating(Float oldAvgRating, Float oldDriverRating) {
+        return (oldAvgRating * 2) - oldDriverRating;
     }
 
 
